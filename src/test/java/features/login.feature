@@ -1,5 +1,5 @@
 Feature: LoginForm
-  Scenario: User can log in correctly
+  Scenario: User can login correctly
     Given The user is at "https://the-internet.herokuapp.com/login"
     When The user introduces "tomsmith" as username
     And The user introduces "SuperSecretPassword!" as password
