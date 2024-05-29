@@ -7,4 +7,4 @@ Feature: The user can look for friends to rent at "Buscar Amigos" section
     And Introduces "Contraseña123@" at password field
     And Pushes "Iniciar Sesión" button
     Then The "Buscar Amigos" section is shown
-   # Then The user looks for "Jairo Andree Maida Rojas" name on every list result and doesn't find anything
+    Then The user looks for "Jairo Andree Maida Rojas" name on every list result and doesn't find anything

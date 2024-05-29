@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BAmigos {
 
@@ -61,8 +62,27 @@ public class BAmigos {
     }
 
     @Then("The user looks for {string} name on every list result and doesn't find anything")
-    public void the_user_looks_for_name_on_every_list_result_and_doesn_t_find_anything(String string) {
-        // throw new io.cucumber.java.PendingException();
+    public void the_user_looks_for_name_on_every_list_result_and_doesn_t_find_anything(String name) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // Espera hasta que al menos un elemento con la clase "card-title" sea visible
+        List<WebElement> elements = wait
+                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("card-title")));
+
+        boolean nameFound = false;
+
+        // Recorre la lista y verifica si alguno de los elementos contiene el texto
+        // especificado
+        for (WebElement element : elements) {
+            if (element.getText().contains(name)) {
+                nameFound = true;
+                break;
+            }
+        }
+
+        if (nameFound) {
+            throw new AssertionError("El nombre " + name + " fue encontrado en la lista.");
+        }
+
     }
 
 }
