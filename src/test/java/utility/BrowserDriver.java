@@ -7,19 +7,21 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class BrowserDriver {
 
     public static WebDriver driver;
-
     public static ChromeOptions options;
 
-    public BrowserDriver(){
+    public BrowserDriver() {
         options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins--");
+        options.addArguments("--remote-allow-origins=*");
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-        System.setProperty("webdriver.chrome.driver", System.getProperty("usr.dir") + "src/resources/chromeDriver.exe");
-        this.driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver",
+                System.getProperty("user.dir") + "/src/resources/chromeDriver.exe");
+        BrowserDriver.driver = new ChromeDriver(options); // Utiliza BrowserDriver.driver para variables estáticas
         driver.get("https://the-internet.herokuapp.com/login");
     }
 
-    public void close(){
-        this.driver.close();
+    public void close() {
+        if (BrowserDriver.driver != null) {
+            BrowserDriver.driver.close();
+        }
     }
 }
