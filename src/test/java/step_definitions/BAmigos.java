@@ -83,6 +83,7 @@ public class BAmigos {
             throw new AssertionError("El nombre " + name + " fue encontrado en la lista.");
         }
 
+        driver.close();
     }
 
 }
