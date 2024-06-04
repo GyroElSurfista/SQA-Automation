@@ -57,4 +57,8 @@ public class Base {
     public void close(){
         driver.close();
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
 }
