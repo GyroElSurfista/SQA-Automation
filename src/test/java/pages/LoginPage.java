@@ -8,7 +8,6 @@ public class LoginPage extends Base {
 
     public LoginPage(WebDriver driver){
         super(driver);
-        this.driver = driver;
     }
 
     //localizadores para elementos del login
