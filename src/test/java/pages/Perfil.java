@@ -8,9 +8,14 @@ public class Perfil extends Base {
         super(webDriver);
     }
 
+    private String pageTitle = "//h1";
     private String strayButton = "//div[2]/ul/li[2]";
 
     public void clickStrayButton(){
-        findElement("xpath", strayButton);
+        findElementWaitClickable(10, "xpath", strayButton).click();
+    }
+
+    public boolean checkPageTitle(String title){
+        return findElementWaitVisibility(30,"xpath", pageTitle).getText().equals(title);
     }
 }

@@ -16,6 +16,6 @@ public class BandejaSolP extends Base {
     }
 
     public boolean checkMessageForEmpty(String msg){
-        return findElement("xpath", message).getText().equals(msg);
+        return findElementWaitVisibility(10,"xpath", message).getText().equals(msg);
     }
 }

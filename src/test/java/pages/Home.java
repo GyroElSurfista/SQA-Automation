@@ -3,6 +3,9 @@ package pages;
 
 import base.Base;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Home extends Base {
 
@@ -17,7 +20,7 @@ public class Home extends Base {
     }
 
     public void clickLoginButton(){
-        findElement("xpath", loginButton);
+        findElementWaitClickable(10, "xpath", loginButton).click();
     }
 
 }

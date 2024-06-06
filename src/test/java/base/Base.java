@@ -3,6 +3,10 @@ package base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Base {
 
@@ -52,6 +56,16 @@ public class Base {
 
     public WebElement findElement(String locatorType, String locator){
         return driver.findElement(getLocatorType(locatorType, locator));
+    }
+
+    public WebElement findElementWaitClickable(long seconds, String locatorType, String locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        return wait.until(ExpectedConditions.elementToBeClickable(getLocatorType(locatorType, locator)));
+    }
+
+    public WebElement findElementWaitVisibility(long seconds, String locatorType, String locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(getLocatorType(locatorType, locator)));
     }
 
     public void close(){

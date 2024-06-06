@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.*;
 
+import static org.junit.Assert.assertTrue;
+
 public class BandejaSol {
 
     private final WebDriverCreator webDriverCreator = new ChromeDriverCreator();
@@ -45,27 +47,26 @@ public class BandejaSol {
     @When("The user is redirected to Buscar Amigos section")
     public void the_user_is_redirected_to_buscar_amigos_section() {
         buscarAmigos = new BuscarAmigos(loginFriender.getDriver());
-        assert (buscarAmigos.checkMainText("Buscar Amigos"));
+        assertTrue(buscarAmigos.checkMainText("Buscar Amigos"));
     }
     @When("The user clicks on the profile button at navbar")
     public void the_user_clicks_on_the_profile_button_at_navbar() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        buscarAmigos.clickProfileButton();
     }
     @When("The user is redirected to his profile")
     public void the_user_is_redirected_to_his_profile() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        perfil = new Perfil(buscarAmigos.getDriver());
+        assertTrue(perfil.checkPageTitle("Mi Perfil"));
     }
     @When("The user clicks on Solicitudes Pendientes Button")
     public void the_user_clicks_on_solicitudes_pendientes_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        perfil.clickStrayButton();
     }
     @Then("The user is redirected to his requests tray and the message {string} is shown")
     public void the_user_is_redirected_to_his_requests_tray_and_the_message_is_shown(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        bandeja = new BandejaSolP(perfil.getDriver());
+        bandeja.checkMessageForEmpty(string);
+        bandeja.close();
     }
 
 }

@@ -15,9 +15,9 @@ public class BuscarAmigos extends Base {
     }
 
     public boolean checkMainText(String text){
-        return findElement("xpath", mainText).getText().equals(text);
+        return findElementWaitClickable(10,"xpath", mainText).getText().equals(text);
     }
     public void clickProfileButton(){
-        findElement("xpath", profileButton);
+        findElementWaitClickable(10,"xpath", profileButton).click();
     }
 }
