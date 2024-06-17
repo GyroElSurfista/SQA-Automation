@@ -9,8 +9,7 @@ import pages.*;
 
 import static org.junit.Assert.assertTrue;
 
-public class BandejaSol {
-
+public class Pagination {
     private final WebDriverCreator webDriverCreator = new ChromeDriverCreator();
     private Home homePage;
     private LoginFriender loginFriender;
@@ -49,24 +48,13 @@ public class BandejaSol {
         buscarAmigos = new BuscarAmigos(loginFriender.getDriver());
         assertTrue(buscarAmigos.checkMainText("Buscar Amigos"));
     }
-    @When("The user clicks on the profile button at navbar")
-    public void the_user_clicks_on_the_profile_button_at_navbar() {
-        buscarAmigos.clickProfileButton();
+    @When("There is just one pagination number")
+    public void there_is_just_one_pagination_number(){
+        assertTrue(buscarAmigos.checkSinglePageNumber());
     }
-    @When("The user is redirected to his profile")
-    public void the_user_is_redirected_to_his_profile() {
-        perfil = new Perfil(buscarAmigos.getDriver());
-        assertTrue(perfil.checkPageTitle("Mi Perfil"));
+    @Then("The navigation buttons are disabled")
+    public void the_navigation_buttons_are_disabled() {
+        assertTrue(!buscarAmigos.leftPaginationButtonIsEnabled() && !buscarAmigos.rightPaginationButtonIsEnabled());
+        buscarAmigos.close();
     }
-    @When("The user clicks on Solicitudes Pendientes Button")
-    public void the_user_clicks_on_solicitudes_pendientes_button() {
-        perfil.clickStrayButton();
-    }
-    @Then("The user is redirected to his requests tray and the message {string} is shown")
-    public void the_user_is_redirected_to_his_requests_tray_and_the_message_is_shown(String string) {
-        bandeja = new BandejaSolP(perfil.getDriver());
-        bandeja.checkMessageForEmpty(string);
-        bandeja.close();
-    }
-
 }

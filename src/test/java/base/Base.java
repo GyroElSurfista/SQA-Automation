@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Base {
 
@@ -68,6 +69,14 @@ public class Base {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(getLocatorType(locatorType, locator)));
     }
 
+    public List<WebElement> findElementsWaitVisibility(long seconds, String locatorType, String locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getLocatorType(locatorType, locator)));
+        for (WebElement element : elements) {
+            wait.until(ExpectedConditions.visibilityOf(element));
+        }
+        return elements;
+    }
     public void close(){
         driver.close();
     }
