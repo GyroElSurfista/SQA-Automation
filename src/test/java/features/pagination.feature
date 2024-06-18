@@ -13,7 +13,7 @@ Feature: Pagination allows user move trough friend list
 
     Examples:
       | email                      | username                 | password       |
-      | 202000229@est.umss.edu     | Emily Callejas           | 123Emi@@               |
+      | 202000229@est.umss.edu     | Emily Callejas           | 123Emi@@       |
       | jairotrabaja123@gmail.com  | Jairo Andree Maida Rojas | Contraseña123@ |
       | cetapigleisia@gmail.com    | Giulianno Morales Pinto  | vivaBolivia14$ |
       | j.airotrabaja123@gmail.com | JuanitoPoderoso          | Contraseña123@ |
