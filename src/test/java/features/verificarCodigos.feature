@@ -2,10 +2,10 @@
 # date: 01/05/2024
 # language: es
 
-Requisito: Verificar que los códigos de registro no se envíen al correo electrónico de un usuario ya registrado en el sistema
+Requisito: Verificar que un código aleatorio no sea validado en el registro de un usuario
 
-  Este test case verifica que los códigos de registro solicitados durante el proceso
-  de registro se envíen al correo electrónico del usuario
+  Este test case verifica que los códigos de registro aleatorios
+  no sean validados o utilizables para el registro de un usuario
 
   Escenario: Registrar usuario cliente
 
@@ -14,7 +14,7 @@ Requisito: Verificar que los códigos de registro no se envíen al correo electr
     Cuando Llena parcialmente el formulario con los datos "<Nombre>", "<Apellido paterno>", "<Apellido materno>", "<Fecha de nacimiento>", "<Genero>", "<Ubicacion>", "<Nombre de usuario>", "<Correo>", "<Password>"
     Y Pulsa el botón 'Siguiente'
     Y Ingresa un "<Codigo>" aleatorio
-    Entonces Recibe códigos de verificación en la bandeja de su "<Correo>" en "https://gmail.com/" usando su "<Password>"
+    Entonces Visualiza un mensaje de error
     Ejemplos:
       | Nombre | Apellido paterno | Apellido materno | Fecha de nacimiento | Genero | Codigo | Ubicacion  | Nombre de usuario | Correo                 | Password  |
       | Winsor | Orellana         | Vásquez          | 30012002            | M      | JHKEO  | Cochabamba | Winsor2002        | winsoromar12@gmail.com | Pepit@123 |

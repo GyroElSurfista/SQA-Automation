@@ -72,16 +72,16 @@ public class VerificarCodigos {
         button.sendKeys(codigo);
     }
 
-    @Entonces("Recibe códigos de verificación en la bandeja de su {string} en {string} usando su {string}")
-    public void recibeCodigosDeVerificacionEnLaBandejaDeSuEnUsandoSu(String email, String urlGmail, String password) {
+    @Entonces("Visualiza un mensaje de error")
+    public void visualizaMensajeError() {
         driver.findElement(By.xpath("//button[contains(@class, 'btn-verde')]")).click();
-        WebElement message = new WebDriverWait(driver, Duration.ofSeconds(10))
+        WebElement message = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div[2]/div/p[6]")));
 
         Assert.assertEquals(message.getText(), "Código de verificación incorrecto.");
 
         try {
-            Thread.sleep(10000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
