@@ -10,11 +10,11 @@ en el perfil de este amigo.
     And Introduces "<email>" at user/email field
     And Introduces "<password>" at password field
     And Pushes "Iniciar Sesión" button
-    Then The user is redirected to Mi Perfil section
+    And The user is redirected to Mi Perfil section
     And The user pushes the "Cuenta de Amigo" button at sidebar
     When The user changes the price to "<new_price>"
     And The user pushes the "Cambiar Precio" button
-    And The user pushes the "Mi Perfil" button at profile sidebar
+    Then The user pushes the "Mi Perfil" button at profile sidebar
    
     Examples:
       | email                        | password       | new_price |

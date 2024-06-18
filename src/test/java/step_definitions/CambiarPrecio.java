@@ -49,7 +49,7 @@ public class CambiarPrecio {
         Thread.sleep(3000);
     }
 
-    @Then("The user is redirected to Mi Perfil section")
+    @And("The user is redirected to Mi Perfil section")
     public void user_is_redirected_to_mi_perfil_section() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement perfilLink = wait
@@ -92,7 +92,7 @@ public class CambiarPrecio {
         Thread.sleep(1000);
     }
 
-    @And("The user pushes the {string} button at profile sidebar")
+    @Then("The user pushes the {string} button at profile sidebar")
     public void the_user_pushes_the_button_at_profile_sidebar(String buttonName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement sidebarButton = wait
