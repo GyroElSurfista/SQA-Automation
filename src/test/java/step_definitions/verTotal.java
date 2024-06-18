@@ -1,11 +1,14 @@
 package step_definitions;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -41,22 +44,32 @@ public class verTotal {
         driver.findElement(By.xpath("//form/button")).click();
     }
 
-    @And("The user selects a friend from the list in {string}")
+    @And("The user selects a friend from the list in {string} section")
     public void selects_a_friend(String sec){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement verPerfilButton = wait
-                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"lista_amigos\"]/div[3]/div/div[1]/div/div[2]/div/div[2]/a")));
-        
-        verPerfilButton.click();
+        List<WebElement> listaAmigos = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("card-actions")));
 
-        // Espera hasta que el botón 'Solicitar Cita' esté visible y habilitado
+        // Seleccionar una tarjeta aleatoria
+        Random rand = new Random();
+        WebElement tarjetaAleatoria = listaAmigos.get(rand.nextInt(listaAmigos.size()));
+        
+        // Hacer clic en el botón 'Ver perfil' de la tarjeta aleatoria
+        WebElement verPerfilButton = tarjetaAleatoria.findElement(By.className("btn-azul"));
+        // Esperar a que el botón 'Ver perfil' sea clickeable
+        wait.until(ExpectedConditions.elementToBeClickable(verPerfilButton));
+        
+        // Usar Actions para movernos y hacer clic en el botón
+        Actions actions = new Actions(driver);
+        actions.moveToElement(verPerfilButton).click().perform();
+
+        // Esperar hasta que el botón 'Solicitar Cita' esté visible y habilitado
         WebElement solicitarCitaButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Solicitar Cita']")));
         
         // Hacer clic en el botón 'Solicitar Cita'
         solicitarCitaButton.click();
     }
 
-    @And("The user enters a {string} of the meeting")
+    @And("The user enters a {string} of the meeting in the rental application form")
     public void enters_duration_of_meeting(String duration){
         WebElement duracionInput = driver.findElement(By.name("duracion"));
         duracionInput.clear(); // Limpiar el campo de entrada antes de ingresar la duración
