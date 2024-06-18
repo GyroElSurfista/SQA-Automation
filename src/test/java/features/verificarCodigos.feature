@@ -18,4 +18,4 @@ Requisito: Verificar que un código aleatorio no sea validado en el registro de 
     Entonces Visualiza un mensaje de error
     Ejemplos:
       | Nombre | Apellido paterno | Apellido materno | Fecha de nacimiento | Genero | Codigo | Ubicacion  | Nombre de usuario | Correo                 | Password  |
-      | Winsor | Orellana         | Vásquez          | 30012002            | M      | JHKEO  | Cochabamba | Winsor2002        | winsoromar12@gmail.com | Pepit@123 |
+      | Winsor | Orellana         | Vásquez          | 01302002            | M      | JHKEO  | Cochabamba | Winsor2002        | winsoromar12@gmail.com | Pepit@123 |
