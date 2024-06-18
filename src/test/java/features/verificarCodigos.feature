@@ -14,6 +14,7 @@ Requisito: Verificar que un código aleatorio no sea validado en el registro de 
     Cuando Llena parcialmente el formulario con los datos "<Nombre>", "<Apellido paterno>", "<Apellido materno>", "<Fecha de nacimiento>", "<Genero>", "<Ubicacion>", "<Nombre de usuario>", "<Correo>", "<Password>"
     Y Pulsa el botón 'Siguiente'
     Y Ingresa un "<Codigo>" aleatorio
+    Y Pulsa el botón 'Verificar'
     Entonces Visualiza un mensaje de error
     Ejemplos:
       | Nombre | Apellido paterno | Apellido materno | Fecha de nacimiento | Genero | Codigo | Ubicacion  | Nombre de usuario | Correo                 | Password  |

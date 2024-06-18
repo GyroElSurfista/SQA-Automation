@@ -72,9 +72,14 @@ public class VerificarCodigos {
         button.sendKeys(codigo);
     }
 
+    @Y("Pulsa el botón 'Verificar'")
+    public void pulsaElBotonVerificar() {
+        driver.findElement(By.xpath("//button[contains(@class, 'btn-verde')]")).click();
+    }
+
     @Entonces("Visualiza un mensaje de error")
     public void visualizaMensajeError() {
-        driver.findElement(By.xpath("//button[contains(@class, 'btn-verde')]")).click();
+        
         WebElement message = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div[2]/div/p[6]")));
 
