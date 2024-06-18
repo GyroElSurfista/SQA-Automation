@@ -1,6 +1,10 @@
-Feature: The user can look for friends to rent at "Cambiar Precio" section
+Feature: Verificar la actualización del precio al cambiarlo y pulsar 'Cambiar precio'
 
- Scenario Outline: A user who enabled his friend account can not find himself at the list of friends
+Cuando un usuario inicie sesion en modo Amigo y decida cambiar el precio de su alquiler, 
+el sistema debe facilitar la modificación del precio y asegurarse de que el cambio se refleje de manera precisa 
+en el perfil de este amigo.
+
+ Scenario Outline: User who enables his friend account and changes the price of his rental
     Given The friend user is at "https://friender.vercel.app/"
     When The user pushes the "Iniciar Sesión" button at navbar
     And Introduces "<email>" at user/email field
@@ -13,5 +17,5 @@ Feature: The user can look for friends to rent at "Cambiar Precio" section
     And The user pushes the "Mi Perfil" button at profile sidebar
    
     Examples:
-      | email                       | username            | password       | new_price |
-      | zapataparidaniela@gmail.com | Daniela Zapata Pari | nuevaContra24- | 100       |
+      | email                        | password       | new_price |
+      | zapataparidaniela@gmail.com  | nuevaContra24- | 45        |
